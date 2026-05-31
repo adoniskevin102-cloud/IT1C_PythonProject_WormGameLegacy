@@ -54,7 +54,7 @@ Game Over Conditions:
 Colliding with the boundary/wall
 Colliding with your own body
 
----
+
 
 # 👨‍💻 GROUP MEMBERS / DEVELOPERS
 1.JOHN KEVIN D. ADONIS
