@@ -59,7 +59,9 @@ Colliding with your own body
 # 👨‍💻 GROUP MEMBERS / DEVELOPERS
 1.JOHN KEVIN D. ADONIS - ME
 2.@jupiter4546
-3. 
+3. staywart
 4. 
+5.
+6.
 
 **Section:** IT1C | 
