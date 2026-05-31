@@ -57,11 +57,12 @@ Colliding with your own body
 ---
 
 # 👨‍💻 GROUP MEMBERS / DEVELOPERS
-1.JOHN KEVIN D. ADONIS - ME
-2.@jupiter4546
-3. staywart
-4. 
-5.
-6.
+1.JOHN KEVIN D. ADONIS
+2.Alfred Banda
+3.Charles Almario
+4.Ely Jay Almazan
+5.Jun staywart Conde
+6.John Roi ken German
+7.Cianrei Bares
 
 **Section:** IT1C | 
