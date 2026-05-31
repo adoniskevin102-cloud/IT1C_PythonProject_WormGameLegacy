@@ -16,7 +16,7 @@ This project demonstrates fundamental programming concepts including variables, 
 - **Random Module** - Generates random positions for food spawning
 - **Winsound Module** - Adds audio feedback for game events
 
----
+
 
 
 ## 🎮 GAME FEATURES
