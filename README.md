@@ -88,7 +88,12 @@ It's the perfect blend of nostalgia and modern programming, making it both enter
 | **macOS** | ✅ Yes | `pip install pygame` |
 | **Linux** | ✅ Yes | `pip install pygame` |
 
-**Note:** If pygame can't be installed or audio fails, the game will still work perfectly - sounds will just be skipped silently.
+**Sound Backend Details:**
+- **Windows**: Uses native `winsound` module (built-in, no installation needed)
+- **macOS/Linux**: Uses `pygame` for cross-platform audio compatibility
+- **Fallback**: If no audio library is available, sounds are skipped silently - **the game still works perfectly!**
+
+This intelligent system ensures the game runs on any Python installation, with audio support when possible but graceful degradation when not available.
 
 ---
 
@@ -132,10 +137,12 @@ Your goal is simple but challenging:
 | ✅ **Dual Control Options** | Use WASD keys OR arrow keys - choose what feels best |
 | ✅ **Score Tracking** | Keep track of current score and highest score |
 | ✅ **Progressive Difficulty** | Game automatically gets faster as you eat more |
-| ✅ **Sound Effects** | Audio feedback for eating food and game over events |
-| ✅ **Visual Polish** | Colorful graphics with background image support |
+| ✅ **Cross-Platform Audio** | Sound effects with intelligent fallback support |
+| ✅ **Visual Polish** | Colorful graphics with background image support and visible border |
+| ✅ **Clear Boundaries** | Visual border shows the play area so you always know where the walls are |
 | ✅ **Instant Restart** | Jump back in with the R key - no need to restart |
 | ✅ **Graceful Exit** | Clean shutdown with the E key |
+| ✅ **Platform Support** | Runs on Windows, macOS, and Linux |
 
 ---
 
@@ -156,52 +163,73 @@ Your goal is simple but challenging:
 ```
 IT1C_PythonProject_WormGameLegacy/
 │
-├── 📄 README.md                          ← You are here! (Project documentation)
+├── 📄 README.md                              ← You are here! (Project documentation)
 │
-├── 📄 INSTALL.md                         (Detailed installation instructions)
+├── 📄 INSTALL.md                             (Detailed installation instructions)
 │
-├── 📄 requirements.txt                   (Python dependencies)
+├── 📄 requirements.txt                       (Python dependencies - optional for Mac/Linux)
+│
+├── 📄 test_imports.py                        (Import validation script)
 │
 ├── 📁 source/
-│   └── 🐍 main.py                        (Main game - THIS IS WHAT YOU RUN)
+│   └── 🐍 main.py                            (Main game - THIS IS WHAT YOU RUN!)
 │
 ├── 📁 documentation/
-│   ├── 📊 flowchart.png                 (Visual program flow diagram)
-│   ├── 📋 program logic explanation.docx (Detailed technical explanation)
-│   └── 📝 pseudocode.md                 (Algorithm written in plain English)
+│   ├── 📊 flowchart.png                      (Visual program flow diagram)
+│   ├── 📋 program_logic.md                   (Program logic explanation in Markdown)
+│   ├── 📋 program logic explanation.docx     (Detailed technical explanation in Word)
+│   ├── 📝 pseudocode.md                      (Algorithm written in plain English)
+│   └── 📄 INSTALL.md                         (Installation guide with troubleshooting)
 │
 └── 📁 images/
-    ├── 🖼️  WORM BG I USE TO CANVA.png   (Game background image)
-    └── 🎨 WORM LOGO.png                 (Project logo/icon)
+    ├── 🖼️  WORM BG I USE TO CANVA.png        (Game background image)
+    └── 🎨 WORM LOGO.png                      (Project logo/icon)
 ```
 
 ---
 
 ## 🎓 Game Mechanics (Technical Details)
 
+### Visual Design
+- **Play Area**: 600×600 pixel screen with a visible dark-red border
+- **Border**: 4-pixel thick border marks the collision boundary at ±270 pixels
+- **Labels**: "WALL" labels appear at top and bottom to clearly indicate boundaries
+
 ### How Movement Works
 1. The worm is made up of segments (head + body parts)
 2. When you press a key, the head moves in that direction
 3. Body segments follow the head like a train (each follows the one in front)
 4. The game updates every 0.1 seconds (or faster as difficulty increases)
+5. Movement occurs in 20-pixel cell steps for clean, grid-based movement
 
 ### How Collision Detection Works
-1. **Wall Collision:** Game checks if head position is beyond the 290-pixel boundary
+1. **Wall Collision:** Game checks if head position exceeds the ±270 pixel boundary
 2. **Self-Collision:** Game checks if head is touching any body segment
+3. Both trigger an error beep and Game Over state
 
 ### How Growth Works
-1. You eat food when head gets close enough to it
+1. You eat food when head gets close enough to it (within 20 pixels)
 2. A new body segment is created and added to the worm
 3. The segment follows the segment in front of it
-4. Game speed increases slightly to make it more challenging
+4. Game speed increases slightly (delay decreases by 0.001s, minimum 0.05s)
 
 ### Game State System
-- **Play State:** Normal gameplay
+- **Play State:** Normal gameplay, continuous movement and collision detection
 - **Game Over State:** Waiting for restart (R) or exit (E) commands
 
 ---
 
-## 🐛 Troubleshooting
+## ✅ Validation & Testing
+
+To verify that your system has all the necessary dependencies, run:
+
+```bash
+python test_imports.py
+```
+
+This script will check if all required modules can be imported and report any missing dependencies. It's a quick way to diagnose setup issues before playing the game.
+
+---
 
 ### "ModuleNotFoundError: No module named 'turtle'"
 This shouldn't happen - Turtle is built into Python. Try:
@@ -290,6 +318,22 @@ This project was created by the **IT1C section** as a collaborative final projec
 
 ---
 
+## 📋 Version History
+
+**Current Version: Legacy Edition (Final)**
+
+### Recent Improvements
+- ✨ **Cross-Platform Sound System**: Intelligent audio backend that works on Windows, macOS, and Linux
+- 🎨 **Visual Border System**: Clear, labeled boundaries with dark-red border marking walls
+- 🐍 **Smooth Movement**: Grid-based 20-pixel cell movement for precise control
+- 📈 **Progressive Difficulty**: Speed increases smoothly as you progress (caps at 0.05s delay)
+- 🎮 **Dual Control Schemes**: Both WASD and arrow keys supported
+- 🛡️ **Graceful Fallbacks**: Game runs even without pygame or winsound libraries
+
+This is the stable, feature-complete version of the Worm Game. Enjoy!
+
+---
+
 ## ⭐ Have Fun!
 
 Thanks for playing! This was made with care by the IT1C team. Enjoy the nostalgia and challenge yourself to beat your high score! 
@@ -298,4 +342,5 @@ Thanks for playing! This was made with care by the IT1C team. Enjoy the nostalgi
 
 ---
 
-*Last Updated: June 2026 | Made with ❤️ in Python* 
+*Last Updated: June 2, 2026 | Made with ❤️ in Python* 
+*Version: Legacy Edition (Final) | Status: Production Ready ✅* 
