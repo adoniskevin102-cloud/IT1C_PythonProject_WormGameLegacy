@@ -1,0 +1,6 @@
+# Worm Game - Optional Sound Support
+# Use this if you want cross-platform sound effects
+# Install with: pip install -r requirements-sound.txt
+
+pygame>=2.1.0  # Cross-platform sound support (Windows, macOS, Linux)
+
