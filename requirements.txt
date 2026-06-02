@@ -1,0 +1,19 @@
+# Worm Game - Main Requirements
+# The base game uses only Python's built-in libraries (turtle)
+#
+# SOUND SUPPORT (OPTIONAL):
+# - On Windows: Uses winsound (built-in) automatically
+# - On macOS/Linux: pygame is recommended for cross-platform sound
+#
+# PYGAME INSTALLATION:
+# pygame is optional and only needed for enhanced sound support on macOS/Linux
+#
+# For Python 3.13 and earlier:
+#   pip install pygame>=2.5.2
+#
+# For Python 3.14+:
+#   pygame pre-built wheels are not yet available. The game still works
+#   and will use winsound on Windows for sound effects.
+
+# Uncomment the line below if you're on Python 3.13 or earlier and want pygame:
+# pygame>=2.5.2
